@@ -13,6 +13,9 @@ class MongoDB:
         self._client = MongoClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'], connect=False)
         self._db = self._client[app.config['MONGO_DB']]
 
+    def get_client(self):
+        return self._client
+
     def __getitem__(self, item):
         if not self._client or not self._db:
             raise Exception("Connection must be initiated with init_app")
