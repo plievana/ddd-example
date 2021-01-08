@@ -1,16 +1,11 @@
 from flask import Flask
-from app.lib.mongo import MongoDB
-db = MongoDB()
 
 
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile("config.py")
-    
-    # Database
-    db.init_app(app)
 
-    from app.api import bp as api_bp
-    app.register_blueprint(api_bp)
+    from app.entry_points.api import create_blueprint as create_api
+    app.register_blueprint(create_api(app.config))
 
     return app
