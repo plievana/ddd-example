@@ -1,4 +1,4 @@
-from app.hexagonal.status.application.status_getter import StatusGetter
+from src.hexagonal.status.application.status_getter import StatusGetter
 
 
 class StatusModuleDependencyContainer:

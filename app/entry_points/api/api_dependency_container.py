@@ -1,6 +1,6 @@
-from app.hexagonal.status.infrastructure.dependency_injection import StatusModuleDependencyContainer
-from app.hexagonal.user.infrastructure.dependency_injection import UserModuleDependencyContainer
-from app.hexagonal.video.infrastructure.dependency_injection import VideoModuleDependencyContainer
+from src.hexagonal.status.infrastructure.dependency_injection import StatusModuleDependencyContainer
+from src.hexagonal.user.infrastructure.dependency_injection import UserModuleDependencyContainer
+from src.hexagonal.video.infrastructure.dependency_injection import VideoModuleDependencyContainer
 
 
 class ApiDependencyContainer:

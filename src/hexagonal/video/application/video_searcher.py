@@ -1,6 +1,6 @@
 from typing import Sequence
-from app.hexagonal.video.domain.video_repository import VideoRepository
-from app.hexagonal.video.domain.video import Video
+from src.hexagonal.video.domain.video_repository import VideoRepository
+from src.hexagonal.video.domain.video import Video
 
 
 class VideoSearcher:

@@ -1,8 +1,8 @@
-from app.hexagonal.shared.infrastructure.db_connection import DBConnection
-from app.hexagonal.user.domain.user_repository import UserRepository
-from app.hexagonal.user.infrastructure.repository.mongo_user_repository import MongoUserRepository
-from app.hexagonal.user.application.user_searcher import UserSearcher
-from app.hexagonal.user.application.user_creator import UserCreator
+from src.shared.infrastructure.db_connection import DBConnection
+from src.hexagonal.user.domain.user_repository import UserRepository
+from src.hexagonal.user.infrastructure.repository.mongo_user_repository import MongoUserRepository
+from src.hexagonal.user.application.user_searcher import UserSearcher
+from src.hexagonal.user.application.user_creator import UserCreator
 
 
 class UserModuleDependencyContainer:

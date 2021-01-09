@@ -1,8 +1,8 @@
-from app.hexagonal.shared.infrastructure.db_connection import DBConnection
-from app.hexagonal.video.domain.video_repository import VideoRepository
-from app.hexagonal.video.infrastructure.repository.mongo_video_repository import MongoVideoRepository
-from app.hexagonal.video.application.video_searcher import VideoSearcher
-from app.hexagonal.video.application.video_creator import VideoCreator
+from src.shared.infrastructure.db_connection import DBConnection
+from src.hexagonal.video.domain.video_repository import VideoRepository
+from src.hexagonal.video.infrastructure.repository.mongo_video_repository import MongoVideoRepository
+from src.hexagonal.video.application.video_searcher import VideoSearcher
+from src.hexagonal.video.application.video_creator import VideoCreator
 
 
 class VideoModuleDependencyContainer:

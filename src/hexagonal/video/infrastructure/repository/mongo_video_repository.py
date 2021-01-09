@@ -1,8 +1,8 @@
 from typing import Sequence
 
-from app.hexagonal.shared.infrastructure.mongo_connection import MongoDB
-from app.hexagonal.video.domain.video import Video
-from app.hexagonal.video.domain.video_repository import VideoRepository
+from src.shared.infrastructure.mongo_connection import MongoDB
+from src.hexagonal.video.domain.video import Video
+from src.hexagonal.video.domain.video_repository import VideoRepository
 
 
 class MongoVideoRepository(VideoRepository):

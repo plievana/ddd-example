@@ -5,8 +5,8 @@ from http import HTTPStatus
 
 import pytest
 
-from app.hexagonal.video.domain.video import Video
-from app.hexagonal.video.infrastructure.repository.mongo_video_repository import MongoVideoRepository
+from src.hexagonal.video.domain.video import Video
+from src.hexagonal.video.infrastructure.repository.mongo_video_repository import MongoVideoRepository
 
 
 @pytest.mark.usefixtures("mongo_client")

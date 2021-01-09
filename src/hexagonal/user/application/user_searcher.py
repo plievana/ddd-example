@@ -1,6 +1,6 @@
 from typing import Sequence
-from app.hexagonal.user.domain.user_repository import UserRepository
-from app.hexagonal.user.domain.user import User
+from src.hexagonal.user.domain.user_repository import UserRepository
+from src.hexagonal.user.domain.user import User
 
 
 class UserSearcher:

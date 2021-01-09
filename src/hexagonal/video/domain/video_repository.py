@@ -1,6 +1,6 @@
 import abc
 from typing import Sequence
-from app.hexagonal.video.domain.video import Video
+from src.hexagonal.video.domain.video import Video
 
 
 class VideoRepository(metaclass=abc.ABCMeta):

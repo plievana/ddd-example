@@ -1,8 +1,8 @@
 from typing import Sequence
 
-from app.hexagonal.shared.infrastructure.mongo_connection import MongoDB
-from app.hexagonal.user.domain.user import User
-from app.hexagonal.user.domain.user_repository import UserRepository
+from src.shared.infrastructure.mongo_connection import MongoDB
+from src.hexagonal.user.domain.user import User
+from src.hexagonal.user.domain.user_repository import UserRepository
 
 
 class MongoUserRepository(UserRepository):

@@ -1,6 +1,6 @@
 import abc
 from typing import Sequence
-from app.hexagonal.user.domain.user import User
+from src.hexagonal.user.domain.user import User
 
 
 class UserRepository(metaclass=abc.ABCMeta):

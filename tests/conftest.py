@@ -3,7 +3,7 @@ import pytest
 
 from flask import Flask
 from app import create_app
-from app.hexagonal.shared.infrastructure.mongo_connection import MongoDB
+from src.shared.infrastructure.mongo_connection import MongoDB
 
 MONGO_DB = 'testing'
 
@@ -20,7 +20,6 @@ def get_mongo_client(app: Flask) -> MongoDB:
 @pytest.fixture(scope="session")
 def app(request):
     """Create and configure a new app instance for each test."""
-    # create the app with common test config
     os.environ['MONGO_DB'] = MONGO_DB
     app = create_app()
 

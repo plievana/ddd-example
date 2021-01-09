@@ -5,8 +5,8 @@ from http import HTTPStatus
 
 import pytest
 
-from app.hexagonal.user.domain.user import User
-from app.hexagonal.user.infrastructure.repository.mongo_user_repository import MongoUserRepository
+from src.hexagonal.user.domain.user import User
+from src.hexagonal.user.infrastructure.repository.mongo_user_repository import MongoUserRepository
 
 
 @pytest.mark.usefixtures("mongo_client")
