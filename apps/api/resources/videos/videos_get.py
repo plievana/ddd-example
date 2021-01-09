@@ -1,4 +1,4 @@
-from app.entry_points.api.resources import Resource
+from apps.api.resources import Resource
 
 
 class VideosGetResource(Resource):

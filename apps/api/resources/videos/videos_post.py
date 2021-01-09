@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from flask import request
 
-from app.entry_points.api.resources import Resource
+from apps.api.resources import Resource
 
 
 class VideosPostResource(Resource):

@@ -19,7 +19,7 @@ def get_mongo_client(app: Flask) -> MongoDB:
 
 @pytest.fixture(scope="session")
 def app(request):
-    """Create and configure a new app instance for each test."""
+    """Create and configure a new apps instance for each test."""
     os.environ['MONGO_DB'] = MONGO_DB
     app = create_app()
 
@@ -37,5 +37,5 @@ def mongo_client(request, app):
 
 @pytest.fixture
 def client(app):
-    """A test client for the app."""
+    """A test client for the apps."""
     return app.test_client()
