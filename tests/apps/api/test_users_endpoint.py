@@ -6,7 +6,10 @@ from http import HTTPStatus
 import pytest
 
 from src.hexagonal.user.domain.user import User
+from src.hexagonal.shared.domain.user.vo.id import UserId
+from src.hexagonal.user.domain.vo.name import UserName
 from src.hexagonal.user.infrastructure.repository.mongo_user_repository import MongoUserRepository
+from apps.api.encoders.user import UserEncoder
 
 
 @pytest.mark.usefixtures("mongo_client")
@@ -20,12 +23,13 @@ class TestUsersEndpoint:
         return all the users getting("/users")
         """
         for i in range(0, random.randint(1, 10)):
-            user = User().load({"id": uuid.uuid4(), "name": f"User {i}"})
+            user = User(id=UserId(uuid.uuid4()),
+                        name=UserName(f"User {i}"))
             self.repository.save(user)
         response = client.get("/users")
         assert response.status_code == HTTPStatus.OK
         assert response.headers['Content-Type'] == 'application/json'
-        assert json.loads(response.data) == self.repository.all()
+        assert json.loads(response.data) == [UserEncoder.encode(u) for u in self.repository.all()]
 
     def test_post(self, client):
         """

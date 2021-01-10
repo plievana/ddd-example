@@ -1,4 +1,5 @@
 from apps.api.resources import Resource
+from apps.api.encoders.video import VideoEncoder
 
 
 class VideosGetResource(Resource):
@@ -7,4 +8,4 @@ class VideosGetResource(Resource):
         self.videos_searcher = kwargs.get('videos_searcher')
 
     def get(self):
-        return self.videos_searcher.all()
+        return [VideoEncoder.encode(v) for v in self.videos_searcher.all()]

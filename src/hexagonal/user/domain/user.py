@@ -1,10 +1,14 @@
 from datetime import datetime
-import uuid
-from marshmallow import Schema, fields, validate
+
+from src.hexagonal.shared.domain.user.vo.id import UserId
+from src.hexagonal.user.domain.vo.name import UserName
+from src.hexagonal.user.domain.vo.updated import UserUpdated
 
 
-class User(Schema):
-    id = fields.UUID(required=True)
-    user_id = fields.UUID(missing=uuid.uuid4())
-    name = fields.Str(validate=validate.Length(max=255))
-    updated_at = fields.DateTime(missing=datetime.now())
+class User:
+    __slots__ = ('id', 'name', 'updated_at',)
+
+    def __init__(self, id: UserId, name: UserName, updated_at: UserUpdated = None):
+        self.id = id
+        self.name = name
+        self.updated_at = updated_at if updated_at else UserUpdated(datetime.now())

@@ -1,13 +1,21 @@
-import uuid
 from datetime import datetime
-from marshmallow import Schema, fields, validate
+
+from src.hexagonal.video.domain.vo.id import VideoId
+from src.hexagonal.video.domain.vo.title import VideoTitle
+from src.hexagonal.video.domain.vo.duration import VideoDuration
+from src.hexagonal.video.domain.vo.category import VideoCategory
+from src.hexagonal.video.domain.vo.updated import VideoUpdated
+from src.hexagonal.shared.domain.user.vo.id import UserId
 
 
-class Video(Schema):
-    id = fields.UUID(required=True)
-    video_id = fields.UUID(missing=uuid.uuid4())
-    title = fields.Str(required=True, validate=validate.Length(max=255))
-    duration_in_seconds = fields.Int(required=True, validate=validate.Range(min=0))
-    category = fields.Str(required=True, validate=validate.Length(max=255))
-    creator_id = fields.UUID(required=True)
-    updated_at = fields.DateTime(missing=datetime.now())
+class Video:
+    __slots__ = ('id', 'title', 'duration_in_seconds', 'category', 'creator_id', 'updated_at',)
+
+    def __init__(self, id: VideoId, title: VideoTitle, duration_in_seconds: VideoDuration, category: VideoCategory,
+                 creator_id: UserId, updated_at: VideoUpdated = None):
+        self.id = id
+        self.title = title
+        self.duration_in_seconds = duration_in_seconds
+        self.category = category
+        self.creator_id = creator_id
+        self.updated_at = updated_at if updated_at else VideoUpdated(datetime.now())

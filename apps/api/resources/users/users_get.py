@@ -1,4 +1,5 @@
 from apps.api.resources import Resource
+from apps.api.encoders.user import UserEncoder
 
 
 class UsersGetResource(Resource):
@@ -7,4 +8,4 @@ class UsersGetResource(Resource):
         self.users_searcher = kwargs.get('users_searcher')
 
     def get(self):
-        return self.users_searcher.all()
+        return [UserEncoder.encode(u) for u in self.users_searcher.all()]

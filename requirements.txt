@@ -1,6 +1,5 @@
 flask
 flask-restful
-marshmallow
 pymongo
 pytest
 pytest-mock
