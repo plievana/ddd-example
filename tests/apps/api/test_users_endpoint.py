@@ -4,19 +4,21 @@ import random
 from http import HTTPStatus
 
 import pytest
+import inject
 
 from src.hexagonal.user.domain.user import User
 from src.hexagonal.shared.domain.user.vo.id import UserId
+from src.hexagonal.user.domain.user_repository import UserRepository
 from src.hexagonal.user.domain.vo.name import UserName
-from src.hexagonal.user.infrastructure.repository.mongo_user_repository import MongoUserRepository
 from apps.api.encoders.user import UserEncoder
 
 
 @pytest.mark.usefixtures("mongo_client")
 class TestUsersEndpoint:
+    repository = inject.attr(UserRepository)
+
     def setup(self):
         self.mongo_client.db.users.drop()
-        self.repository = MongoUserRepository(self.mongo_client)
 
     def test_get(self, client):
         """

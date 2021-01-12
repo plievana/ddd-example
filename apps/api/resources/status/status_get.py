@@ -1,9 +1,7 @@
 from apps.api.resources import Resource
+from src.hexagonal.status.application.status_getter import StatusGetter
 
 
 class StatusResource(Resource):
-    def __init__(self, **kwargs):
-        self.status_getter = kwargs.get('status_getter')
-
     def get(self):
-        return self.status_getter.get()
+        return StatusGetter().get()

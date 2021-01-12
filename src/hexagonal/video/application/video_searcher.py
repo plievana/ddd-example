@@ -1,13 +1,12 @@
 from typing import Sequence
+import inject
 from src.hexagonal.video.domain.video_repository import VideoRepository
 from src.hexagonal.video.domain.video import Video
 
 
 class VideoSearcher:
-    __slots__ = ('repository',)
+    repository = inject.attr(VideoRepository)
 
-    def __init__(self, repository: VideoRepository):
-        self.repository = repository
-
-    def all(self) -> Sequence[Video]:
-        return self.repository.all()
+    @classmethod
+    def all(cls) -> Sequence[Video]:
+        return cls.repository.all()

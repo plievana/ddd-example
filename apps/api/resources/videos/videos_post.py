@@ -7,12 +7,10 @@ from src.hexagonal.video.domain.vo.title import VideoTitle
 from src.hexagonal.video.domain.vo.duration import VideoDuration
 from src.hexagonal.video.domain.vo.category import VideoCategory
 from src.hexagonal.shared.domain.user.vo.id import UserId
+from src.hexagonal.video.application.video_creator import VideoCreator
 
 
 class VideosPostResource(Resource):
-
-    def __init__(self, **kwargs):
-        self.videos_creator = kwargs['videos_creator']
 
     def post(self):
         data = request.json
@@ -22,10 +20,10 @@ class VideosPostResource(Resource):
         category = data.get('category')
         creator_id = data.get('creator_id')
 
-        self.videos_creator.create(id=VideoId(id),
-                                   title=VideoTitle(title),
-                                   duration_in_seconds=VideoDuration(duration_in_seconds),
-                                   category=VideoCategory(category),
-                                   creator_id=UserId(creator_id))
+        VideoCreator.create(id=VideoId(id),
+                            title=VideoTitle(title),
+                            duration_in_seconds=VideoDuration(duration_in_seconds),
+                            category=VideoCategory(category),
+                            creator_id=UserId(creator_id))
 
         return '', HTTPStatus.NO_CONTENT

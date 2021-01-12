@@ -2,7 +2,7 @@ import os
 import pytest
 
 from flask import Flask
-from app import create_app
+from project import create_app
 from src.shared.infrastructure.mongo_connection import MongoDB
 
 MONGO_DB = 'testing'

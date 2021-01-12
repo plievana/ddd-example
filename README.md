@@ -38,7 +38,7 @@ One of the goals of this project is to serve as an example illustrating how to i
 
 ### Start http server
 1. `export FLASK_ENV=development`
-2. `export FLASK_APP="app:create_app()"`
+2. `export FLASK_APP="project:create_app()"`
 3. `flask run`
 
 ### To run tests:

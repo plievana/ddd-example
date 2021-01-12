@@ -4,22 +4,24 @@ import random
 from http import HTTPStatus
 
 import pytest
+import inject
 
 from src.hexagonal.video.domain.video import Video
+from src.hexagonal.video.domain.video_repository import VideoRepository
 from src.hexagonal.video.domain.vo.id import VideoId
 from src.hexagonal.video.domain.vo.title import VideoTitle
 from src.hexagonal.video.domain.vo.duration import VideoDuration
 from src.hexagonal.video.domain.vo.category import VideoCategory
 from src.hexagonal.shared.domain.user.vo.id import UserId
-from src.hexagonal.video.infrastructure.repository.mongo_video_repository import MongoVideoRepository
 from apps.api.encoders.video import VideoEncoder
 
 
 @pytest.mark.usefixtures("mongo_client")
 class TestVideosEndpoint:
+    repository = inject.attr(VideoRepository)
+
     def setup(self):
         self.mongo_client.db.users.drop()
-        self.repository = MongoVideoRepository(self.mongo_client)
 
     def test_get(self, client):
         """
