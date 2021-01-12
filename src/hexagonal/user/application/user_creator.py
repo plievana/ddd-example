@@ -11,5 +11,5 @@ class UserCreator:
 
     @classmethod
     def create(cls, id: UserId, name: UserName) -> None:
-        user = User(id=id, name=name)
+        user = User.create(id=id, name=name)
         cls.repository.save(user)

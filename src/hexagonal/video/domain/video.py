@@ -1,3 +1,4 @@
+from __future__ import annotations
 from datetime import datetime
 
 from src.hexagonal.video.domain.vo.id import VideoId
@@ -19,3 +20,9 @@ class Video:
         self.category = category
         self.creator_id = creator_id
         self.updated_at = updated_at if updated_at else VideoUpdated(datetime.now())
+
+    @staticmethod
+    def create(id: VideoId, title: VideoTitle, duration_in_seconds: VideoDuration, category: VideoCategory,
+               creator_id: UserId) -> Video:
+        video = Video(id, title, duration_in_seconds, category, creator_id)
+        return video

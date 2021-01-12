@@ -1,3 +1,4 @@
+from __future__ import annotations
 from datetime import datetime
 
 from src.hexagonal.shared.domain.user.vo.id import UserId
@@ -12,3 +13,9 @@ class User:
         self.id = id
         self.name = name
         self.updated_at = updated_at if updated_at else UserUpdated(datetime.now())
+
+    @staticmethod
+    def create(id: UserId, name: UserName) -> User:
+        user = User(id, name)
+        return user
+

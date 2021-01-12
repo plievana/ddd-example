@@ -15,6 +15,6 @@ class VideoCreator:
     @classmethod
     def create(cls, id: VideoId, title: VideoTitle, duration_in_seconds: VideoDuration,
                category: VideoCategory, creator_id: UserId) -> None:
-        video = Video(id=id, title=title, duration_in_seconds=duration_in_seconds, category=category,
-                      creator_id=creator_id)
+        video = Video.create(id=id, title=title, duration_in_seconds=duration_in_seconds, category=category,
+                             creator_id=creator_id)
         cls.repository.save(video)
