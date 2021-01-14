@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-from src.shared.infrastructure.db_connection import DBConnection
+from src.shared.domain.db_connection import DBConnection
 
 
 class MongoDB(DBConnection):

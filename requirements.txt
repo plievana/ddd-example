@@ -4,3 +4,4 @@ pymongo
 inject
 pytest
 pytest-mock
+blinker
