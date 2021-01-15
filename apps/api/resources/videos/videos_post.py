@@ -16,14 +16,14 @@ class VideosPostResource(Resource):
         data = request.json
         id = data.get('id')
         title = data.get('title')
-        duration_in_seconds = int(data.get('duration_in_seconds'))
+        duration_in_seconds = data.get('duration_in_seconds')
         category = data.get('category')
         creator_id = data.get('creator_id')
 
-        VideoCreator.create(id=VideoId(id),
-                            title=VideoTitle(title),
-                            duration_in_seconds=VideoDuration(duration_in_seconds),
-                            category=VideoCategory(category),
-                            creator_id=UserId(creator_id))
+        VideoCreator.create(id=VideoId.from_text(id),
+                            title=VideoTitle.from_text(title),
+                            duration_in_seconds=VideoDuration.from_text(duration_in_seconds),
+                            category=VideoCategory.from_text(category),
+                            creator_id=UserId.from_text(creator_id))
 
         return '', HTTPStatus.NO_CONTENT

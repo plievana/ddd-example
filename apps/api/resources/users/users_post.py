@@ -15,6 +15,12 @@ class UsersPostResource(Resource):
         id = data.get('id')
         name = data.get('name')
 
-        UserCreator.create(id=UserId(id), name=UserName(name))
+        try:
+            UserId.from_text(id)
+        except Exception as e:
+            from flask import current_app
+            current_app.logger.error(str(e), exc_info=True)
+
+        UserCreator.create(id=UserId.from_text(id), name=UserName.from_text(name))
 
         return '', HTTPStatus.NO_CONTENT
