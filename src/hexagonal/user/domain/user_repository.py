@@ -1,5 +1,6 @@
 import abc
 from typing import Sequence
+
 from src.hexagonal.user.domain.user import User
 
 
@@ -11,4 +12,8 @@ class UserRepository(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def save(self, user: User) -> None:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def delete_one(self, user: User) -> None:
         raise NotImplementedError

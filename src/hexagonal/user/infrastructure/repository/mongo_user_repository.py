@@ -29,3 +29,9 @@ class MongoUserRepository(UserRepository):
             'updated_at': user.updated_at.value
         }
         self._collection.save(user_dict)
+
+    def delete_one(self, user: User) -> None:
+        user_dict = {
+            'user_id': user.id.value,
+        }
+        self._collection.delete_one(user_dict)
