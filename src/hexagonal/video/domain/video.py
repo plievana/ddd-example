@@ -7,13 +7,15 @@ from src.hexagonal.video.domain.vo.duration import VideoDuration
 from src.hexagonal.video.domain.vo.category import VideoCategory
 from src.hexagonal.video.domain.vo.updated import VideoUpdated
 from src.hexagonal.shared.domain.user.vo.id import UserId
+from src.shared.domain.aggregate.aggregate_root import AggregateRoot
 
 
-class Video:
+class Video(AggregateRoot):
     __slots__ = ('id', 'title', 'duration_in_seconds', 'category', 'creator_id', 'updated_at',)
 
     def __init__(self, id: VideoId, title: VideoTitle, duration_in_seconds: VideoDuration, category: VideoCategory,
                  creator_id: UserId, updated_at: VideoUpdated = None):
+        super(Video, self).__init__()
         self.id = id
         self.title = title
         self.duration_in_seconds = duration_in_seconds
@@ -25,4 +27,11 @@ class Video:
     def create(id: VideoId, title: VideoTitle, duration_in_seconds: VideoDuration, category: VideoCategory,
                creator_id: UserId) -> Video:
         video = Video(id, title, duration_in_seconds, category, creator_id)
+        # TODO create domain event
+        return video
+
+    @staticmethod
+    def delete(id: VideoId):
+        video = Video(id, None, None, None, None)
+        # TODO create domain event
         return video

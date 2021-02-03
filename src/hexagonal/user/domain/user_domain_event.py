@@ -16,3 +16,19 @@ class UserCreatedDomainEvent(DomainEvent):
         return {
             'name': self.name
         }
+
+
+class UserDeletedDomainEvent(DomainEvent):
+    event_name = 'user.deleted'
+
+    def __init__(self, id: str, event_id: str = None, occurred_on: str = None):
+        super(UserDeletedDomainEvent, self).__init__(id, event_id, occurred_on)
+
+    @classmethod
+    def from_primitives(cls, id: str, body: dict, event_id: str, occurred_on: str) -> DomainEvent:
+        return UserDeletedDomainEvent(id, event_id, occurred_on)
+
+    def to_primitives(self) -> dict:
+        return {
+            'id': self.id
+        }
